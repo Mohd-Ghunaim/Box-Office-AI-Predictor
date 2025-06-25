@@ -3,8 +3,14 @@ from sklearn.model_selection import train_test_split
 from xgboost import XGBRegressor
 from sklearn.metrics import mean_absolute_error
 import joblib
+import os
+from dotenv import load_dotenv
 
-# Load the CSV you mentioned
+# Load environment variables
+load_dotenv()
+TMDB_API_KEY = os.getenv("TMDB_API_KEY")
+
+# Load the CSV file
 df = pd.read_csv("dataset_1_collected_data.csv")
 
 # Show a few rows to understand the data
@@ -19,7 +25,7 @@ df['popularity'] = df['popularity'].fillna(df['popularity'].median())
 df['vote_average'] = df['vote_average'].fillna(df['vote_average'].median())
 df['vote_count'] = df['vote_count'].fillna(0)
 
-# Features we'll use
+# Features and target
 features = ['budget', 'popularity', 'runtime', 'vote_average', 'vote_count']
 target = 'revenue'
 
