@@ -5,6 +5,7 @@ from sklearn.metrics import mean_absolute_error
 import joblib
 import os
 from dotenv import load_dotenv
+from tmdb_utils import get_movie_features  # your TMDB fetch functions
 
 # Load environment variables
 load_dotenv()
@@ -33,7 +34,8 @@ X = df[features]
 y = df[target]
 
 # Split into train/test
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+X_train, X_test, y_train, y_test = train_test_split(
+    X, y, test_size=0.2, random_state=42)
 
 # Train the model
 model = XGBRegressor()
@@ -47,7 +49,7 @@ print(f"Mean Absolute Error: {mae:,.2f}")
 # Save model
 joblib.dump(model, 'model.pkl')
 
-# Example prediction
+"""# Example prediction
 example = pd.DataFrame([{
     'budget': 100_000_000,
     'popularity': 80,
@@ -55,6 +57,15 @@ example = pd.DataFrame([{
     'vote_average': 7.0,
     'vote_count': 3000
 }])
-
 pred = model.predict(example)
-print(f"Predicted revenue: ${pred[0]:,.2f}")
+print(f"Predicted revenue: ${pred[0]:,.2f}")"""
+
+# -------------------
+# Inputs
+movie_title = input("\nEnter a movie title to predict revenue: ").strip()
+try:
+    features_df = get_movie_features(movie_title, TMDB_API_KEY)
+    pred = model.predict(features_df)
+    print(f"Predicted revenue for '{movie_title}': ${pred[0]:,.2f}")
+except Exception as e:
+    print(f"Error fetching or predicting movie: {e}")
