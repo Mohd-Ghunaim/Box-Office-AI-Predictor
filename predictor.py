@@ -49,17 +49,6 @@ print(f"Mean Absolute Error: {mae:,.2f}")
 # Save model
 joblib.dump(model, 'model.pkl')
 
-"""# Example prediction
-example = pd.DataFrame([{
-    'budget': 100_000_000,
-    'popularity': 80,
-    'runtime': 120,
-    'vote_average': 7.0,
-    'vote_count': 3000
-}])
-pred = model.predict(example)
-print(f"Predicted revenue: ${pred[0]:,.2f}")"""
-
 # -------------------
 # Inputs
 movie_title = input("\nEnter a movie title to predict revenue: ").strip()
