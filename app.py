@@ -3,7 +3,7 @@ import joblib
 import pandas as pd
 import os
 from dotenv import load_dotenv
-from tmdb_utils import get_movie_features  # Use your existing function
+from tmdb_utils import get_movie_features 
 
 app = Flask(__name__)
 load_dotenv()
