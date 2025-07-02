@@ -1,0 +1,84 @@
+/* Predictor.css */
+
+.body {
+  width: 100%;
+}
+
+.container {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #f0f2f5;
+  padding: 20px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  width: 100%;
+}
+
+.card {
+  max-width: 400px;
+  width: 100%;
+  background: white;
+  padding: 30px 40px;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+  text-align: center;
+}
+
+.title {
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.input {
+  padding: 12px 15px;
+  font-size: 1rem;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.input:focus {
+  border-color: #007BFF;
+}
+
+.button {
+  padding: 12px 15px;
+  font-size: 1rem;
+  background-color: #007BFF;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.button:disabled {
+  background-color: #6c757d;
+  cursor: not-allowed;
+}
+
+.button:not(:disabled):hover {
+  background-color: #0056b3;
+}
+
+.prediction {
+  margin-top: 25px;
+  font-weight: 600;
+  font-size: 1.2rem;
+  color: #28a745;
+}
+
+.error {
+  margin-top: 25px;
+  color: #dc3545;
+  font-weight: 600;
+  font-size: 1rem;
+}

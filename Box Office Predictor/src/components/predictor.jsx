@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import './predictor.css'; 
 
 export default function Predictor() {
   const [title, setTitle] = useState('');
@@ -26,29 +27,35 @@ export default function Predictor() {
   };
 
   return (
-    <div style={{ maxWidth: 500, margin: '2rem auto', fontFamily: 'Arial, sans-serif' }}>
-      <h2>Box Office Revenue Predictor</h2>
-      <form onSubmit={handleSubmit}>
-        <input
-          type="text"
-          placeholder="Enter movie title"
-          value={title}
-          onChange={(e) => setTitle(e.target.value)}
-          style={{ width: '100%', padding: '0.5rem', fontSize: '1rem' }}
-          disabled={loading}
-        />
-        <button type="submit" style={{ marginTop: 10, padding: '0.5rem 1rem' }} disabled={loading}>
-          {loading ? 'Predicting...' : 'Predict Revenue'}
-        </button>
-      </form>
+    <div className="container">
+      <div className="card">
+        <h2 className="title">Box Office Revenue Predictor</h2>
+        <form onSubmit={handleSubmit} className="form">
+          <input
+            type="text"
+            placeholder="Enter movie title"
+            value={title}
+            onChange={(e) => setTitle(e.target.value)}
+            className="input"
+            disabled={loading}
+          />
+          <button type="submit" disabled={loading} className="button">
+            {loading ? 'Predicting...' : 'Predict Revenue'}
+          </button>
+        </form>
 
-      {prediction !== null && (
-        <div style={{ marginTop: 20, fontWeight: 'bold' }}>
-          Predicted Revenue: ${prediction.toLocaleString(undefined, { maximumFractionDigits: 0 })}
-        </div>
-      )}
+        {prediction !== null && (
+          <div className="prediction">
+            Predicted Revenue: ${prediction.toLocaleString(undefined, { maximumFractionDigits: 0 })}
+          </div>
+        )}
 
-      {error && <div style={{ marginTop: 20, color: 'red' }}>{error}</div>}
+        {error && (
+          <div className="error">
+            {error}
+          </div>
+        )}
+      </div>
     </div>
   );
 }
