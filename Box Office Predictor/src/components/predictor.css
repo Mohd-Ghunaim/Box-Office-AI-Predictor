@@ -1,23 +1,31 @@
-/* Predictor.css */
-
-.body {
-  width: 100%;
+/* Reset default browser spacing */
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
 }
 
-.container {
-  min-height: 100vh;
+/* Center content using flexbox */
+body {
   display: flex;
   justify-content: center;
   align-items: center;
-  background: #f0f2f5;
-  padding: 20px;
+  background-color: black; /* optional black background */
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  width: 100%;
 }
 
+/* Container with fixed panel size */
+.container {
+  background: #f0f2f5;
+  padding: 40px;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+  width: 450px;           /* desktop panel width */
+  max-width: 90vw;
+}
+
+/* White card inside */
 .card {
-  max-width: 400px;
-  width: 100%;
   background: white;
   padding: 30px 40px;
   border-radius: 12px;
@@ -25,17 +33,20 @@
   text-align: center;
 }
 
+/* Title */
 .title {
   margin-bottom: 20px;
   color: #333;
 }
 
+/* Form layout */
 .form {
   display: flex;
   flex-direction: column;
   gap: 15px;
 }
 
+/* Input styling */
 .input {
   padding: 12px 15px;
   font-size: 1rem;
@@ -43,12 +54,16 @@
   border: 1px solid #ccc;
   outline: none;
   transition: border-color 0.2s;
+  width: 100%;
+  max-width: 350px;
+  margin: 0 auto;
 }
 
 .input:focus {
   border-color: #007BFF;
 }
 
+/* Button styling */
 .button {
   padding: 12px 15px;
   font-size: 1rem;
@@ -58,6 +73,9 @@
   border-radius: 8px;
   cursor: pointer;
   transition: background-color 0.3s;
+  width: 100%;
+  max-width: 350px;
+  margin: 0 auto;
 }
 
 .button:disabled {
@@ -69,6 +87,7 @@
   background-color: #0056b3;
 }
 
+/* Prediction text */
 .prediction {
   margin-top: 25px;
   font-weight: 600;
@@ -76,6 +95,7 @@
   color: #28a745;
 }
 
+/* Error text */
 .error {
   margin-top: 25px;
   color: #dc3545;
