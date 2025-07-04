@@ -24,11 +24,6 @@ def get_movie_features(title, api_key):
     details_response.raise_for_status()
     details = details_response.json()
 
-    # Determine if the movie is released
-    release_date = details.get("release_date", "")
-    status = details.get("status", "Unknown")
-    is_released = status == "Released" and release_date != ""
-
     # Fallback medians
     median_budget = 50_000_000
     median_popularity = 15
@@ -36,17 +31,34 @@ def get_movie_features(title, api_key):
     median_vote_average = 6.0
     median_vote_count = 10
 
-    budget = details.get("budget") or median_budget
-    popularity = details.get("popularity") or median_popularity
-    runtime = details.get("runtime") or median_runtime
-    vote_average = details.get("vote_average") or median_vote_average
-    vote_count = details.get("vote_count") or median_vote_count
+    # Extract raw values (may be zero or None)
+    budget = details.get("budget", 0) or median_budget
+    popularity = details.get("popularity", 0) or median_popularity
+    runtime = details.get("runtime", 0) or median_runtime
+    vote_average = details.get("vote_average", 0)
+    vote_count = details.get("vote_count", 0)
 
-    # Boost if unreleased
-    if not is_released:
+    # Determine if movie is released or not
+    status = details.get("status", "").lower()
+    release_date = details.get("release_date", "")
+
+    unreleased = (
+        status in ["rumored", "planned", "post production", "in production"] or
+        not release_date or
+        vote_count == 0
+    )
+
+    # Boost features if movie is unreleased
+    if unreleased:
         popularity = max(popularity, 50)
         vote_average = max(vote_average, 7.5)
         vote_count = max(vote_count, 100)
+
+    # Fallbacks in case still zero
+    if not vote_average:
+        vote_average = median_vote_average
+    if not vote_count:
+        vote_count = median_vote_count
 
     return pd.DataFrame([{
         "budget": budget,
