@@ -40,28 +40,47 @@ Box Office Prediction/
 
 ### 1. Clone the repo
 
-- git clone https://github.com/your-username/box-office-predictor.git
-- cd box-office-predictor
+```bash
+git clone https://github.com/Mohd-Ghunaim/Box-Office-AI-Predictor.git
+cd Box-Office-AI-Predictor
+```
 
 ### 2. Setup the backend (Flask API)
 
-- python -m venv .venv
-- .venv\\Scripts\\activate    
-- pip install -r requirements.txt
+```bash
+# Create virtual environment
+python -m venv .venv
+
+# Activate it:
+# On Windows
+.venv\Scripts\activate
+
+# On macOS/Linux
+source .venv/bin/activate
+
+# Then install dependencies
+pip install -r requirements.txt
+```
 
 #### Create .env file
 
-- TMDB_API_KEY=your_tmdb_api_key_here
+```plaintext
+TMDB_API_KEY=your_tmdb_api_key_here
+```
 
 #### Then run the Flask server:
 
-- python app.py
+```bash
+python app.py
+```
 
 ### 3. Setup the frontend (React)
 
-- cd "Box Office Predictor"
-- npm install
-- npm run dev
+```bash
+cd "Box Office Predictor"
+npm install
+npm run dev
+```
 
 ###### Make sure Flask runs on localhost:5000 and React on localhost:5173.
 
