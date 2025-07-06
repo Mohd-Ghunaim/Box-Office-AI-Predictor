@@ -16,7 +16,7 @@ This project predicts the box office revenue of movies using machine learning. I
 - **Other**: Flask-CORS, dotenv
 
 ## 📁 Project Structure
-
+```
 Box Office Prediction/
 │
 ├── app.py # Flask backend API
@@ -34,7 +34,7 @@ Box Office Prediction/
 │ │ ├── Predictor.jsx
 │ │ └── predictor.css
 └── ...
-
+```
 
 ## ⚙️ Setup Instructions
 
