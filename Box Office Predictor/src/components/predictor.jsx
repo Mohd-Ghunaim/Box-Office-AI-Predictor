@@ -27,35 +27,40 @@ export default function Predictor() {
   };
 
   return (
-    <div className="container">
-      <div className="card">
-        <h2 className="title">Box Office Revenue Predictor</h2>
-        <form onSubmit={handleSubmit} className="form">
-          <input
-            type="text"
-            placeholder="Enter movie title"
-            value={title}
-            onChange={(e) => setTitle(e.target.value)}
-            className="input"
-            disabled={loading}
-          />
-          <button type="submit" disabled={loading} className="button">
-            {loading ? 'Predicting...' : 'Predict Revenue'}
-          </button>
-        </form>
+  <div className="container">
+    <div className="card">
+      <h2 className="title">Box Office Revenue Predictor</h2>
+      <form onSubmit={handleSubmit} className="form">
+        <input
+          type="text"
+          placeholder="Enter movie title"
+          value={title}
+          onChange={(e) => setTitle(e.target.value)}
+          className="input"
+          disabled={loading}
+        />
+        <button type="submit" disabled={loading} className="button">
+          {loading ? 'Predicting...' : 'Predict Revenue'}
+        </button>
+      </form>
 
-        {prediction !== null && (
-          <div className="prediction">
-            Predicted Revenue: ${prediction.toLocaleString(undefined, { maximumFractionDigits: 0 })}
-          </div>
-        )}
+      {/* Add the note here */}
+      <p className="note">
+        ⚠️ Please type the movie title exactly as it appears on <a href="https://www.themoviedb.org/" target="_blank" rel="noopener noreferrer">TMDB</a>.
+      </p>
 
-        {error && (
-          <div className="error">
-            {error}
-          </div>
-        )}
-      </div>
+      {prediction !== null && (
+        <div className="prediction">
+          Predicted Revenue: ${prediction.toLocaleString(undefined, { maximumFractionDigits: 0 })}
+        </div>
+      )}
+
+      {error && (
+        <div className="error">
+          {error}
+        </div>
+      )}
     </div>
+  </div>
   );
 }
